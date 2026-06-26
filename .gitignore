@@ -1,4 +1,8 @@
 .gradle/
+.gradle-bin/
+.jdk11/
+gradle-*-bin.zip
+jdk11.zip
 build/
 out/
 .idea/
