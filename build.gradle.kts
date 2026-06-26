@@ -4,7 +4,7 @@ plugins {
   signing
   jacoco
   id("com.diffplug.spotless") version "6.25.0"
-  id("org.jreleaser") version "1.17.0"
+  id("org.jreleaser") version "1.24.0"
 }
 
 group = "com.vzaps"
@@ -105,6 +105,8 @@ signing {
   }
 }
 
+val releaseVersion = version.toString()
+
 jreleaser {
   project {
     name.set("vzaps-sdk")
@@ -112,10 +114,10 @@ jreleaser {
     website.set("https://docs.vzaps.com")
     authors.set(listOf("VZaps"))
     license.set("MIT")
+    version.set(releaseVersion)
     java {
       groupId.set("com.vzaps")
       artifactId.set("vzaps-sdk")
-      version.set(project.version.toString())
     }
   }
   signing {
