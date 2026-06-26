@@ -54,6 +54,17 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.14.3"
+      - name: Export GPG public key for JReleaser
+        shell: bash
+        run: |
+          printf '%s' "$SIGNING_KEY" | gpg --batch --import
+          {
+            echo 'JRELEASER_GPG_PUBLIC_KEY<<EOF'
+            gpg --batch --armor --export
+            echo EOF
+          } >> "$GITHUB_ENV"
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
       - name: Publish to Maven Central
         run: gradle publish jreleaserDeploy --no-configuration-cache
         env:
