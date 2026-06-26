@@ -56,7 +56,6 @@ public final class VZapsHttpClient {
         requestOptions == null ? VZapsRequestOptions.defaults() : requestOptions;
     HttpResponse<String> response = send(method, path, body, effective, false);
     if (response.statusCode() == 401 && effective.authenticate()) {
-      tokenProvider.forceRefresh();
       response = send(method, path, body, effective, true);
     }
     return readResponse(response, type);
@@ -73,7 +72,6 @@ public final class VZapsHttpClient {
         requestOptions == null ? VZapsRequestOptions.defaults() : requestOptions;
     HttpResponse<String> response = send(method, path, body, effective, false);
     if (response.statusCode() == 401 && effective.authenticate()) {
-      tokenProvider.forceRefresh();
       response = send(method, path, body, effective, true);
     }
     if (response.statusCode() < 200 || response.statusCode() >= 300) {
