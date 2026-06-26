@@ -8,13 +8,13 @@ plugins {
 }
 
 group = "com.vzaps"
+
 version = "0.1.0"
+
 description = "Official Java SDK for the VZaps public API"
 
 java {
-  toolchain {
-    languageVersion.set(JavaLanguageVersion.of(11))
-  }
+  toolchain { languageVersion.set(JavaLanguageVersion.of(11)) }
   withSourcesJar()
   withJavadocJar()
 }
@@ -38,9 +38,7 @@ spotless {
     googleJavaFormat("1.22.0")
     target("src/**/*.java", "examples/**/*.java")
   }
-  kotlinGradle {
-    ktfmt()
-  }
+  kotlinGradle { ktfmt() }
 }
 
 tasks.test {
@@ -100,7 +98,7 @@ publishing {
 signing {
   val signingKey = findProperty("signingKey") as String? ?: System.getenv("SIGNING_KEY")
   val signingPassword =
-    findProperty("signingPassword") as String? ?: System.getenv("SIGNING_PASSWORD")
+      findProperty("signingPassword") as String? ?: System.getenv("SIGNING_PASSWORD")
   if (!signingKey.isNullOrBlank()) {
     useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications["mavenJava"])
