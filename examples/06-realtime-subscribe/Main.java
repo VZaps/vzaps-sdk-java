@@ -5,10 +5,10 @@ import com.vzaps.models.realtime.VZapsEventType;
 public final class Main {
   public static void main(String[] args) throws Exception {
     try (VZapsClient client =
-        VZapsClient.builder()
-            .clientToken(System.getenv("VZAPS_CLIENT_TOKEN"))
-            .clientSecret(System.getenv("VZAPS_CLIENT_SECRET"))
-            .build();
+            VZapsClient.builder()
+                .clientToken(System.getenv("VZAPS_CLIENT_TOKEN"))
+                .clientSecret(System.getenv("VZAPS_CLIENT_SECRET"))
+                .build();
         var subscription =
             client
                 .events()
@@ -19,7 +19,8 @@ public final class Main {
                         .event(VZapsEventType.MESSAGE)
                         .reconnect(true)
                         .build())) {
-      subscription.on(VZapsEventType.ALL, event -> System.out.println(event.type() + " " + event.id()));
+      subscription.on(
+          VZapsEventType.ALL, event -> System.out.println(event.type() + " " + event.id()));
       subscription.awaitClose();
     }
   }

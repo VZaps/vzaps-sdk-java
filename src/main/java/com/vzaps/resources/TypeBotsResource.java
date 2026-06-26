@@ -19,12 +19,16 @@ public final class TypeBotsResource extends BaseResource {
 
   public JsonNode update(GenericInstanceRequest request, String typebotId) {
     return send(
-        "PATCH", "/instances/" + esc(request.instanceId()) + "/typebots/" + esc(typebotId), request);
+        "PATCH",
+        "/instances/" + esc(request.instanceId()) + "/typebots/" + esc(typebotId),
+        request);
   }
 
   public JsonNode delete(GenericInstanceRequest request, String typebotId) {
     return send(
-        "DELETE", "/instances/" + esc(request.instanceId()) + "/typebots/" + esc(typebotId), request);
+        "DELETE",
+        "/instances/" + esc(request.instanceId()) + "/typebots/" + esc(typebotId),
+        request);
   }
 
   public JsonNode startSession(GenericInstanceRequest request) {

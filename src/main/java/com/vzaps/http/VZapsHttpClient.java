@@ -18,7 +18,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -84,7 +83,11 @@ public final class VZapsHttpClient {
   }
 
   private HttpResponse<String> send(
-      String method, String path, Object body, VZapsRequestOptions requestOptions, boolean refreshed) {
+      String method,
+      String path,
+      Object body,
+      VZapsRequestOptions requestOptions,
+      boolean refreshed) {
     HttpRequest.Builder builder =
         HttpRequest.newBuilder(buildUri(path, requestOptions.query()))
             .timeout(options.requestTimeout())
@@ -92,12 +95,14 @@ public final class VZapsHttpClient {
             .header("User-Agent", options.userAgent());
 
     if (requestOptions.authenticate()) {
-      String accessToken = refreshed ? tokenProvider.forceRefresh() : tokenProvider.getAccessToken();
+      String accessToken =
+          refreshed ? tokenProvider.forceRefresh() : tokenProvider.getAccessToken();
       builder.header("Authorization", "Bearer " + accessToken);
       builder.header("X-Client-Token", options.clientToken());
     }
 
-    if (requestOptions.instanceToken() != null && !requestOptions.instanceToken().trim().isEmpty()) {
+    if (requestOptions.instanceToken() != null
+        && !requestOptions.instanceToken().trim().isEmpty()) {
       builder.header("X-Instance-Token", requestOptions.instanceToken());
     }
 
@@ -185,13 +190,7 @@ public final class VZapsHttpClient {
 
     StringJoiner joiner = new StringJoiner("&");
     parts.forEach(joiner::add);
-    return URI.create(
-        uri.getScheme()
-            + "://"
-            + uri.getAuthority()
-            + uri.getPath()
-            + "?"
-            + joiner);
+    return URI.create(uri.getScheme() + "://" + uri.getAuthority() + uri.getPath() + "?" + joiner);
   }
 
   private static String snakeCase(String value) {
@@ -223,9 +222,7 @@ public final class VZapsHttpClient {
     if (body == null || body.isEmpty()) {
       return null;
     }
-    return body.length() <= MAX_ERROR_BODY_LENGTH
-        ? body
-        : body.substring(0, MAX_ERROR_BODY_LENGTH);
+    return body.length() <= MAX_ERROR_BODY_LENGTH ? body : body.substring(0, MAX_ERROR_BODY_LENGTH);
   }
 
   private static ErrorShape readError(String body) {

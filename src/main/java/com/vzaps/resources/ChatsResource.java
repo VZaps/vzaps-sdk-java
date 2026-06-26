@@ -14,7 +14,11 @@ public final class ChatsResource extends BaseResource {
         "/instances/" + esc(request.instanceId()) + "/chats",
         null,
         request.instanceToken(),
-        query("page", request.additionalData().get("page"), "pageSize", request.additionalData().get("pageSize")));
+        query(
+            "page",
+            request.additionalData().get("page"),
+            "pageSize",
+            request.additionalData().get("pageSize")));
   }
 
   public JsonNode get(GenericInstanceRequest request, String phone) {
@@ -65,7 +69,8 @@ public final class ChatsResource extends BaseResource {
     return action("PUT", request, phone, "/expiration");
   }
 
-  private JsonNode action(String method, GenericInstanceRequest request, String phone, String suffix) {
+  private JsonNode action(
+      String method, GenericInstanceRequest request, String phone, String suffix) {
     return send(
         method,
         "/instances/" + esc(request.instanceId()) + "/chats/" + esc(phone) + suffix,

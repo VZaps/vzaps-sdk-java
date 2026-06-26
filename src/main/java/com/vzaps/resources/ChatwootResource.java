@@ -23,6 +23,8 @@ public final class ChatwootResource extends BaseResource {
 
   public JsonNode triggerImport(GenericInstanceRequest request, String what) {
     return send(
-        "POST", "/instances/" + esc(request.instanceId()) + "/chatwoot/import/" + esc(what), request);
+        "POST",
+        "/instances/" + esc(request.instanceId()) + "/chatwoot/import/" + esc(what),
+        request);
   }
 }

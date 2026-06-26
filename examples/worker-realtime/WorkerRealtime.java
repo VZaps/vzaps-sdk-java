@@ -20,7 +20,8 @@ public final class WorkerRealtime {
                       .event(VZapsEventType.CONNECTED)
                       .reconnect(true)
                       .build())) {
-        subscription.on(VZapsEventType.ALL, event -> System.out.println(event.type() + " " + event.id()));
+        subscription.on(
+            VZapsEventType.ALL, event -> System.out.println(event.type() + " " + event.id()));
         subscription.awaitClose();
       }
     }

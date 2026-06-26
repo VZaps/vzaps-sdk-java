@@ -27,7 +27,11 @@ public final class InstancesResource extends BaseResource {
     }
     Map<String, Object> body = new LinkedHashMap<>();
     body.put("page", request.page() == null ? 1 : request.page());
-    body.put("size", request.size() == null ? (request.pageSize() == null ? 20 : request.pageSize()) : request.size());
+    body.put(
+        "size",
+        request.size() == null
+            ? (request.pageSize() == null ? 20 : request.pageSize())
+            : request.size());
     body.put("filter", filter);
     if (request.sort() != null) {
       body.put("sort", request.sort());

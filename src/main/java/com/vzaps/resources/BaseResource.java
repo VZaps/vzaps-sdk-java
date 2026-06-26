@@ -56,7 +56,8 @@ abstract class BaseResource {
     return URLEncoder.encode(value, StandardCharsets.UTF_8).replace("+", "%20");
   }
 
-  protected static ObjectNode bodyWithoutInstance(InstanceScopedRequest request, String... excluded) {
+  protected static ObjectNode bodyWithoutInstance(
+      InstanceScopedRequest request, String... excluded) {
     ObjectNode body = VZapsJson.valueToObjectNode(request);
     body.remove("instance_id");
     body.remove("instance_token");

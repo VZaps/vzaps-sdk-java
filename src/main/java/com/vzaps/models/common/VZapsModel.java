@@ -9,8 +9,7 @@ import java.util.Map;
 
 /** Base model that preserves forward-compatible public API fields. */
 public class VZapsModel {
-  @JsonIgnore
-  private final Map<String, Object> additionalData = new LinkedHashMap<>();
+  @JsonIgnore private final Map<String, Object> additionalData = new LinkedHashMap<>();
 
   @JsonAnyGetter
   public Map<String, Object> additionalData() {

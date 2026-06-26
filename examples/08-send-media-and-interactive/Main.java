@@ -19,7 +19,10 @@ public final class Main {
       System.out.println(
           client
               .messages()
-              .sendImage(base.put("image", "https://example.com/image.png").put("caption", "Image").build()));
+              .sendImage(
+                  base.put("image", "https://example.com/image.png")
+                      .put("caption", "Image")
+                      .build()));
       System.out.println(
           client
               .messages()

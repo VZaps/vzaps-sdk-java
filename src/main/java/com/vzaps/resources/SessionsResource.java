@@ -17,7 +17,8 @@ public final class SessionsResource extends BaseResource {
   }
 
   public JsonNode pairCode(String instanceId, String phone, InstanceRequestOptions options) {
-    return send("GET", "/instances/" + esc(instanceId) + "/session/paircode/" + esc(phone), null, options);
+    return send(
+        "GET", "/instances/" + esc(instanceId) + "/session/paircode/" + esc(phone), null, options);
   }
 
   public JsonNode disconnect(String instanceId, InstanceRequestOptions options) {

@@ -4,7 +4,10 @@ import java.time.Duration;
 
 public final class ReconnectPolicy {
   public static final ReconnectPolicy DEFAULT =
-      ReconnectPolicy.builder().initialDelay(Duration.ofMillis(500)).maxDelay(Duration.ofSeconds(15)).build();
+      ReconnectPolicy.builder()
+          .initialDelay(Duration.ofMillis(500))
+          .maxDelay(Duration.ofSeconds(15))
+          .build();
 
   private final Duration initialDelay;
   private final Duration maxDelay;

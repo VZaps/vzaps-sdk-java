@@ -29,7 +29,8 @@ public final class VZapsEventSubscription implements AutoCloseable {
   private final EventSubscribeRequest request;
   private final ReconnectPolicy reconnectPolicy;
   private final CountDownLatch closed = new CountDownLatch(1);
-  private final Map<VZapsEventType, List<Consumer<VZapsEvent>>> handlers = new ConcurrentHashMap<>();
+  private final Map<VZapsEventType, List<Consumer<VZapsEvent>>> handlers =
+      new ConcurrentHashMap<>();
   private volatile WebSocket socket;
   private volatile boolean closing;
   private volatile String lastEventId;

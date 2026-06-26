@@ -107,7 +107,10 @@ final class VZapsClientTest {
   void mapsRateLimitErrors() throws Exception {
     try (MockWebServer server = new MockWebServer()) {
       server.enqueue(json("{\"accessToken\":\"jwt-token\",\"expiresIn\":3600}"));
-      server.enqueue(new MockResponse().setResponseCode(429).setBody("{\"message\":\"slow down\",\"code\":\"rate_limit\"}"));
+      server.enqueue(
+          new MockResponse()
+              .setResponseCode(429)
+              .setBody("{\"message\":\"slow down\",\"code\":\"rate_limit\"}"));
 
       try (VZapsClient client = client(server)) {
         assertThatThrownBy(() -> client.instances().list())
@@ -126,6 +129,9 @@ final class VZapsClientTest {
   }
 
   private static MockResponse json(String body) {
-    return new MockResponse().setResponseCode(200).setHeader("Content-Type", "application/json").setBody(body);
+    return new MockResponse()
+        .setResponseCode(200)
+        .setHeader("Content-Type", "application/json")
+        .setBody(body);
   }
 }

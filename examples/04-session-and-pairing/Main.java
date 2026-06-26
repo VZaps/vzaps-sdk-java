@@ -5,7 +5,9 @@ public final class Main {
   public static void main(String[] args) {
     String instanceId = System.getenv("VZAPS_INSTANCE_ID");
     var options =
-        InstanceRequestOptions.builder().instanceToken(System.getenv("VZAPS_INSTANCE_TOKEN")).build();
+        InstanceRequestOptions.builder()
+            .instanceToken(System.getenv("VZAPS_INSTANCE_TOKEN"))
+            .build();
 
     try (VZapsClient client =
         VZapsClient.builder()

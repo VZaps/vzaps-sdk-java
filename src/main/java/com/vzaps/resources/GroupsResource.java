@@ -14,7 +14,11 @@ public final class GroupsResource extends BaseResource {
         "/instances/" + esc(request.instanceId()) + "/group/list",
         null,
         request.instanceToken(),
-        query("page", request.additionalData().get("page"), "pageSize", request.additionalData().get("pageSize")));
+        query(
+            "page",
+            request.additionalData().get("page"),
+            "pageSize",
+            request.additionalData().get("pageSize")));
   }
 
   public JsonNode get(GenericInstanceRequest request, String groupId) {

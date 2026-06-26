@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.vzaps.http.VZapsHttpClient;
 import com.vzaps.http.VZapsHttpRequest;
 import com.vzaps.resources.AuthResource;
-import com.vzaps.resources.ChatwootResource;
 import com.vzaps.resources.ChatsResource;
+import com.vzaps.resources.ChatwootResource;
 import com.vzaps.resources.ContactsResource;
 import com.vzaps.resources.EventsResource;
 import com.vzaps.resources.GroupsResource;
@@ -112,12 +112,14 @@ public final class VZapsClient implements AutoCloseable {
     return events;
   }
 
-  public <T> T request(String method, String path, Object body, VZapsRequestOptions options, Class<T> type) {
+  public <T> T request(
+      String method, String path, Object body, VZapsRequestOptions options, Class<T> type) {
     return http.request(method, path, body, options, type);
   }
 
   public JsonNode request(VZapsHttpRequest request) {
-    return http.request(request.method(), request.path(), request.body(), request.options(), JsonNode.class);
+    return http.request(
+        request.method(), request.path(), request.body(), request.options(), JsonNode.class);
   }
 
   public VZapsResponse rawRequest(VZapsHttpRequest request) {

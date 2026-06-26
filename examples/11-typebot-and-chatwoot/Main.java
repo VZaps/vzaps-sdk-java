@@ -9,7 +9,11 @@ public final class Main {
             .clientSecret(System.getenv("VZAPS_CLIENT_SECRET"))
             .build()) {
       System.out.println(
-          client.typeBots().list(System.getenv("VZAPS_INSTANCE_ID"), com.vzaps.models.common.InstanceRequestOptions.none()));
+          client
+              .typeBots()
+              .list(
+                  System.getenv("VZAPS_INSTANCE_ID"),
+                  com.vzaps.models.common.InstanceRequestOptions.none()));
       System.out.println(
           client
               .chatwoot()

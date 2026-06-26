@@ -18,7 +18,8 @@ public final class WebhooksResource extends BaseResource {
   }
 
   public JsonNode searchLogs(GenericInstanceRequest request) {
-    return send("POST", "/instances/" + esc(request.instanceId()) + "/webhook/logs/search", request);
+    return send(
+        "POST", "/instances/" + esc(request.instanceId()) + "/webhook/logs/search", request);
   }
 
   public JsonNode getLog(GenericInstanceRequest request, String logId) {
