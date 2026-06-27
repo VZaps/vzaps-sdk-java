@@ -1,0 +1,33 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.vzaps.examples</groupId>
+    <artifactId>vzaps-java-examples</artifactId>
+    <version>0.1.0</version>
+  </parent>
+
+  <artifactId>09-send-poll-reaction-and-chat-actions</artifactId>
+  <name>09-send-poll-reaction-and-chat-actions</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.vzaps</groupId>
+      <artifactId>vzaps-sdk</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>Main</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

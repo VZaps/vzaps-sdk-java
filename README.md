@@ -15,6 +15,7 @@ Works in **Java 11+**. HTTP uses the standard library `java.net.http.HttpClient`
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Examples](#examples)
 - [Quick start](#quick-start)
 - [Authentication](#authentication)
 - [Configuration](#configuration)
@@ -69,6 +70,19 @@ dependencies {
   implementation("com.vzaps:vzaps-sdk:0.1.0")
 }
 ```
+
+---
+
+## Examples
+
+Runnable Maven projects live in [`examples/`](examples/). Each folder includes a `pom.xml` that depends on the published SDK from Maven Central.
+
+```bash
+cd examples/01-auth-and-list-instances
+mvn compile exec:java
+```
+
+See [`examples/README.md`](examples/README.md) for the full list and environment variables.
 
 ---
 

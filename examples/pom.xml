@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.vzaps.examples</groupId>
+  <artifactId>vzaps-java-examples</artifactId>
+  <version>0.1.0</version>
+  <packaging>pom</packaging>
+
+  <name>VZaps Java SDK Examples</name>
+  <description>Runnable Maven examples for the published VZaps Java SDK.</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+    <vzaps.sdk.version>0.1.0</vzaps.sdk.version>
+    <exec.maven.plugin.version>3.1.0</exec.maven.plugin.version>
+    <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.vzaps</groupId>
+        <artifactId>vzaps-sdk</artifactId>
+        <version>${vzaps.sdk.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin.version}</version>
+          <configuration>
+            <release>${maven.compiler.release}</release>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>${exec.maven.plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <modules>
+    <module>01-auth-and-list-instances</module>
+    <module>02-create-instance</module>
+    <module>03-instance-subscription</module>
+    <module>04-session-and-pairing</module>
+    <module>05-configure-webhook</module>
+    <module>06-realtime-subscribe</module>
+    <module>07-send-text-message</module>
+    <module>08-send-media-and-interactive</module>
+    <module>09-send-poll-reaction-and-chat-actions</module>
+    <module>10-queues</module>
+    <module>11-typebot-and-chatwoot</module>
+    <module>quickstart</module>
+    <module>worker-realtime</module>
+  </modules>
+</project>
