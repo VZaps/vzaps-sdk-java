@@ -1,8 +1,6 @@
 # VZaps Java SDK
 
-[![CI](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml) [![SDK Documentation](https://img.shields.io/badge/SDK-Documentation-blue)](https://docs.vzaps.com/en/sdk/java/installation) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![Maven Central](https://img.shields.io/maven-central/v/com.vzaps/vzaps-sdk.svg)](https://central.sonatype.com/artifact/com.vzaps/vzaps-sdk)
-[![Java](https://img.shields.io/badge/Java-11%2B-blue.svg)](https://www.oracle.com/java/)
+[![CI](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml) [![Maven Central](https://img.shields.io/maven-central/v/com.vzaps/vzaps-sdk.svg)](https://central.sonatype.com/artifact/com.vzaps/vzaps-sdk) [![Java](https://img.shields.io/badge/Java-11%2B-blue.svg)](https://www.oracle.com/java/) [![SDK Documentation](https://img.shields.io/badge/SDK-Documentation-blue)](https://docs.vzaps.com/en/sdk/java/installation) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 Official Java client for the [VZaps public API](https://docs.vzaps.com). Send WhatsApp messages, manage instances, configure webhooks, and subscribe to realtime events with a resource-oriented interface and sync and async clients.
 
@@ -18,7 +16,7 @@ Works in **Java 11+**. HTTP uses the standard library `java.net.http.HttpClient`
 - [Examples](#examples)
 - [Quick start](#quick-start)
 - [Authentication](#authentication)
-- [Configuration](#configuration)
+- [Client options](#client-options)
 - [Resources](#resources)
 - [Instance tokens](#instance-tokens)
 - [Webhooks](#webhooks)
@@ -149,14 +147,7 @@ String token = client.auth().getAccessToken();
 
 ---
 
-## Configuration
-
-The SDK connects to the VZaps production platform automatically:
-
-| Service | Endpoint |
-| --- | --- |
-| REST API | `https://api.vzaps.com` |
-| Realtime WebSocket | `wss://realtime.vzaps.com/events/ws` |
+## Client options
 
 Pass options to `VZapsClient.builder()`:
 
@@ -164,15 +155,11 @@ Pass options to `VZapsClient.builder()`:
 | --- | --- | --- | --- |
 | `clientToken` | `String` | — | **Required.** Public client token from the dashboard. |
 | `clientSecret` | `String` | — | **Required.** Client secret used to obtain JWTs. |
-| `baseUrl` | `URI` | `https://api.vzaps.com` | REST API base URL. |
-| `realtimeUrl` | `URI` | `wss://realtime.vzaps.com` | Realtime WebSocket base URL. |
 | `connectTimeout` | `Duration` | `10s` | TCP connect timeout. |
 | `requestTimeout` | `Duration` | `30s` | HTTP request timeout. |
 | `tokenRefreshSkew` | `Duration` | `1m` | Refresh JWT this long before expiry. |
 | `userAgent` | `String` | package default | Optional `User-Agent` header on HTTP requests. |
 | `httpClient` | `HttpClient` | — | Custom Java 11 `HttpClient` (proxy, TLS, tests). |
-
-No host configuration is required — install the package, pass your credentials, and the client targets the production API and realtime service.
 
 ```java
 VZapsClient client = VZapsClient.builder()
@@ -305,7 +292,7 @@ Event payloads (webhook and realtime) use **snake_case**, matching the platform.
 
 ## Realtime events
 
-Subscribe to the same events over WebSocket at **`wss://realtime.vzaps.com`**. This is the recommended path for in-app notifications, bots, and dashboards that need low-latency delivery without exposing a public webhook URL.
+Subscribe to the same events over the VZaps realtime WebSocket. This is the recommended path for in-app notifications, bots, and dashboards that need low-latency delivery without exposing a public webhook URL.
 
 ### Subscribe
 
