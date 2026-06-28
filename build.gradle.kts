@@ -9,7 +9,7 @@ plugins {
 
 group = "com.vzaps"
 
-version = "0.1.0"
+version = "0.1.1"
 
 description = "Official Java SDK for the VZaps public API"
 
