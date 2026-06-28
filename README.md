@@ -1,6 +1,6 @@
 # VZaps Java SDK
 
-[![CI](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml)
+[![CI](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/VZaps/vzaps-sdk-java/actions/workflows/ci.yml) [![SDK Documentation](https://img.shields.io/badge/SDK-Documentation-blue)](https://docs.vzaps.com/en/sdk/java/installation) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/com.vzaps/vzaps-sdk.svg)](https://central.sonatype.com/artifact/com.vzaps/vzaps-sdk)
 [![Java](https://img.shields.io/badge/Java-11%2B-blue.svg)](https://www.oracle.com/java/)
 
