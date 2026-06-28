@@ -88,7 +88,7 @@ final class VZapsClientTest {
       server.enqueue(json("{\"accessToken\":\"old-token\",\"expiresIn\":3600}"));
       server.enqueue(new MockResponse().setResponseCode(401).setBody("{\"message\":\"expired\"}"));
       server.enqueue(json("{\"accessToken\":\"new-token\",\"expiresIn\":3600}"));
-      server.enqueue(json("{\"ok\":true}"));
+      server.enqueue(json("{\"code\":200,\"success\":true,\"data\":{\"connected\":false}}"));
 
       try (VZapsClient client = client(server)) {
         client.sessions().status("VZ123", InstanceRequestOptions.none());

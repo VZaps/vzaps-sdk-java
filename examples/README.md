@@ -2,7 +2,7 @@
 
 Runnable Maven projects that consume the published SDK from Maven Central (`com.vzaps:vzaps-sdk`).
 
-Each numbered folder is a standalone module with its own `pom.xml`. You can copy a single example elsewhere and run it on its own, or run everything from this directory.
+Each numbered folder is a **standalone Maven project** with its own `pom.xml`. You do **not** need to clone the full SDK repository to run one example.
 
 ## Prerequisites
 
@@ -27,61 +27,56 @@ $env:VZAPS_INSTANCE_ID="VZ..."
 $env:VZAPS_INSTANCE_TOKEN="your-instance-token"
 ```
 
-## Run one example
+## Option A — one example folder (recommended)
+
+Download only one example folder, for example [`07-send-text-message`](https://github.com/VZaps/vzaps-sdk-java/tree/main/examples/07-send-text-message):
+
+1. Open the folder on GitHub and choose **Download ZIP**, or run:
 
 ```bash
-cd examples/01-auth-and-list-instances
+npx --yes degit VZaps/vzaps-sdk-java/examples/07-send-text-message vzaps-java-send-text
+cd vzaps-java-send-text
+```
+
+2. Run:
+
+```bash
 mvn compile exec:java
 ```
 
-Other examples:
-
-```bash
-cd examples/02-create-instance && mvn compile exec:java
-cd examples/03-instance-subscription && mvn compile exec:java
-cd examples/04-session-and-pairing && mvn compile exec:java
-cd examples/05-configure-webhook && mvn compile exec:java
-cd examples/06-realtime-subscribe && mvn compile exec:java
-cd examples/07-send-text-message && mvn compile exec:java
-cd examples/08-send-media-and-interactive && mvn compile exec:java
-cd examples/09-send-poll-reaction-and-chat-actions && mvn compile exec:java
-cd examples/10-queues && mvn compile exec:java
-cd examples/11-typebot-and-chatwoot && mvn compile exec:java
-cd examples/quickstart && mvn compile exec:java
-cd examples/worker-realtime && mvn compile exec:java
-```
-
-## Run from the examples root
-
-Build all modules:
-
-```bash
-cd examples
-mvn compile
-```
-
-Run a specific module without changing directories:
-
-```bash
-cd examples
-mvn -pl 07-send-text-message compile exec:java
-```
-
-## Copy one example elsewhere
-
-Each module only needs:
+Each copied folder only needs:
 
 - its own `pom.xml`
 - `src/main/java/*.java`
 
-Update the parent block in `pom.xml` if you copy a single example outside this repository, or replace it with an explicit SDK dependency:
+The `pom.xml` already declares `com.vzaps:vzaps-sdk:0.1.0` explicitly. No parent project is required.
 
-```xml
-<dependency>
-  <groupId>com.vzaps</groupId>
-  <artifactId>vzaps-sdk</artifactId>
-  <version>0.1.0</version>
-</dependency>
+## Option B — sparse checkout
+
+```bash
+git clone --depth 1 --filter=blob:none --sparse https://github.com/VZaps/vzaps-sdk-java.git
+cd vzaps-sdk-java
+git sparse-checkout set examples/07-send-text-message
+cd examples/07-send-text-message
+mvn compile exec:java
+```
+
+## Option C — full repository clone
+
+Use this when you want every example locally or you are contributing to the SDK:
+
+```bash
+git clone https://github.com/VZaps/vzaps-sdk-java.git
+cd vzaps-sdk-java/examples/07-send-text-message
+mvn compile exec:java
+```
+
+Build all modules from the examples root:
+
+```bash
+cd examples
+mvn compile
+mvn -pl 07-send-text-message compile exec:java
 ```
 
 ## Modules
